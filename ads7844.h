@@ -2,6 +2,7 @@
 #define _ADS7844_H_
 
 #include "Arduino.h"
+
 enum pMode{
     powerDown = 0x00,
     always_On = 0x03
@@ -24,34 +25,15 @@ typedef union _control_Byte
     }control_Byte;
     
 };
-typedef union _ads7844_data_h_t_
-{
-    uint8_t d8;
-    struct
-    {
-        uint8_t data:7;
-        uint8_t not_used:1;
-    }ads7844_data_h_t;
-    
-};
-typedef union _ads7844_data_l_t_
-{
-    uint8_t d8;
-    struct
-    {
-        uint8_t not_used:3;
-        uint8_t data:5;
-    }ads7844_data_l_t;
-    
-};
+
 typedef union _ads7844_data_t_
 {
     uint16_t d16;
     struct
     {
-        uint8_t datal:5;
-        uint8_t datah:7;
-        uint8_t not_used:4;
+        uint8_t not_used  : 3;
+        uint16_t data     : 12;
+        uint8_t start     : 1
     }ads7844_data_t;
     
 };
