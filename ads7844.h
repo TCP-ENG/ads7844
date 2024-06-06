@@ -33,7 +33,7 @@ typedef union _ads7844_data_t_
     {
         uint8_t not_used  : 3;
         uint16_t data     : 12;
-        uint8_t start     : 1
+        uint8_t start     : 1;
     }ads7844_data_t;
     
 };
@@ -44,7 +44,16 @@ class ADS7844
         pMode power_mode = powerDown;
         uint8_t csPin;
         uint8_t S_DMode;
-
+        uint8_t chanMap[8] = {
+            0,
+            4,
+            1,
+            5,
+            2,
+            6,
+            3,
+            7
+        };
         
     public:
         void set_pMode(pMode mode);
