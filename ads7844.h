@@ -37,25 +37,26 @@ typedef union _ads7844_data_t_
     }ads7844_data_t;
     
 };
-
+const uint8_t chanMap[8] = {
+    0,
+    4,
+    1,
+    5,
+    2,
+    6,
+    3,
+    7
+};
 class ADS7844
 {
     private:
         pMode power_mode = powerDown;
         uint8_t csPin;
         uint8_t S_DMode;
-        uint8_t chanMap[8] = {
-            0,
-            4,
-            1,
-            5,
-            2,
-            6,
-            3,
-            7
-        };
+
         
-    public:
+    public: 
+
         void set_pMode(pMode mode);
         pMode get_pMode(void);
         void set_csPin(uint8_t cspin);
@@ -66,5 +67,6 @@ class ADS7844
         ~ADS7844();
 };
 
-
+int readALL(uint16_t *data, uint8_t csPin);
+uint16_t read_CH(uint8_t chan, uint8_t csPin);
 #endif
