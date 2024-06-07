@@ -17,3 +17,5 @@ uint16_t value = ads7844.read_CH(0);
 uint16_t values[8];
 ads7844.readALL(data);
 
+```
+
